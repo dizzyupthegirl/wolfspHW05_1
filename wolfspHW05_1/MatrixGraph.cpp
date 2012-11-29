@@ -15,10 +15,6 @@ MatrixGraph::MatrixGraph(unsigned num_nodes) {
 	// Sets all weights equal to -1
 	for(int i=0; i<num_nodes; i++) {
 		for(int k=0; k<num_nodes; k++) {
-			if(i==k) {
-				M[i][k]=0;
-			}
-			else {
 				M[i][k]=0;
 			}
 		}
