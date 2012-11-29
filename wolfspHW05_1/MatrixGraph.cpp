@@ -12,10 +12,15 @@ MatrixGraph::MatrixGraph(unsigned num_nodes) {
 	for(int i=0; i<num_nodes; i++) {
 		M[i].resize(num_nodes);
 	}
-	// Sets all values equal to -1
+	// Sets all weights equal to -1
 	for(int i=0; i<num_nodes; i++) {
 		for(int k=0; k<num_nodes; k++) {
-		 M[i][k]=-1;
+			if(i==k) {
+				M[i][k]=0;
+			}
+			else {
+				M[i][k]=0;
+			}
 		}
 	}
 	
