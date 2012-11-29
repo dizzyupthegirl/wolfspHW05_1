@@ -14,6 +14,8 @@ ListGraph::~ListGraph(){
 
 void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight) {
 	EList:: const_iterator it;
+	
+	// The first section checks to see if it's already in the list
 	bool switchOn=false;
 	for(it=edgeList[u].begin(); it!=edgeList[u].end(); it++) {
 		NWPair pair = (*it);
@@ -24,18 +26,21 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight) {
 	}
 	if(switchOn) {
 		for(it=edgeList[v].begin(); it!=edgeList[v].end(); it++) {
-		NWPair pair = (*it);
-		if(pair.first==u) {
+		 NWPair pair = (*it);
+		 if(pair.first==u) {
 			pair.second=weight;
-			switchOn=true;
+			num_edges++;
+			return;
+		  }
 		}
 	}
 
-
-
-
-
-
+	// The next section is for if it's not already in the list
+	NWPair pair=std::make_pair(v,weight);
+	edgeList[u].push_back(pair);
+	pair.first = u;	
+	edgeList[v].push_back(pair);
+	num_edges++;
 
 }
 
@@ -52,6 +57,7 @@ EdgeWeight ListGraph::weight(NodeID u, NodeID v) const {
 }
 
 std::list<NWPair> ListGraph::getAdj(NodeID u) const {
+	return edgeList[u];
 
 }
 
