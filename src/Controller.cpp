@@ -128,5 +128,8 @@ int main(int argc, char** argv) {
 
   //pair<int,int> p = testSpeedTSP(SB, 60, true);
 
+  string cat;
+  cin>>cat;
+
   return 0;
 }
