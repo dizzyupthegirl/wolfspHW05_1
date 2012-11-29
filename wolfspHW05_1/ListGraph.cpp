@@ -14,6 +14,28 @@ ListGraph::~ListGraph(){
 
 void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight) {
 	EList:: const_iterator it;
+	bool switchOn=false;
+	for(it=edgeList[u].begin(); it!=edgeList[u].end(); it++) {
+		NWPair pair = (*it);
+		if(pair.first==v) {
+			pair.second=weight;
+			switchOn=true;
+		}
+	}
+	if(switchOn) {
+		for(it=edgeList[v].begin(); it!=edgeList[v].end(); it++) {
+		NWPair pair = (*it);
+		if(pair.first==u) {
+			pair.second=weight;
+			switchOn=true;
+		}
+	}
+
+
+
+
+
+
 
 }
 
