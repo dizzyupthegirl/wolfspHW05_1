@@ -1,4 +1,3 @@
-// MatrixGraph.h
 
 #include <vector>
 #include "Graph.h"

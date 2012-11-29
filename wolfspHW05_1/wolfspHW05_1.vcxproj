@@ -41,6 +41,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Users\wolfsp\Documents\Visual Studio 2010\Projects\wolfspHW05_1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -60,6 +61,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Graph.h" />
+    <ClInclude Include="..\include\GraphAlgs.h" />
+    <ClInclude Include="..\include\ListGraph.h" />
+    <ClInclude Include="..\include\MatrixGraph.h" />
+    <ClInclude Include="..\include\StarbucksMap.h" />
+    <ClInclude Include="..\include\Tester.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Controller.cpp" />
+    <ClCompile Include="..\src\StarbucksMap.cpp" />
+    <ClCompile Include="..\src\Tester.cpp" />
+    <ClCompile Include="MatrixGraph.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
