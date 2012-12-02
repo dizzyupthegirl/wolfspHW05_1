@@ -17,20 +17,22 @@ pair<vector<NodeID>, EdgeWeight>  TSP(Graph* G) {
 	EdgeWeight bestWeight = DBL_MAX;
 	list<NWPair> openList;
 	list<NWPair>::iterator it;
-	int n;
+	int size;
 
 	/// 
 	for (int i = 0; i < G->size(); i++)
 		currentPath.push_back(i);
-	n = G->size();
+	size = G->size();
 
-	for (int i = 0; i < factorial(n-1); i++) {
+	for (int i = 0; i < factorial(size-1); i++) {
 		edgeWeight = G->weight(0, currentPath[0]);
-		for (int j = 0; j < n-1; j++) {
+		for (int j = 0; j < size-1; j++) {
 			if (edgeWeight > bestWeight)
-				return;
+				//Originally had return here, but apparently that's not ok. Must be break
+				//Cite: Jake Gregg
+				break;
 			else {
-				if (j == n-2)
+				if (j == size-2)
 					edgeWeight += G->weight(0, currentPath.at(j));
 				else 
 					edgeWeight += G->weight(currentPath.at(j+1), currentPath.at(j));
@@ -38,9 +40,11 @@ pair<vector<NodeID>, EdgeWeight>  TSP(Graph* G) {
 		}
 
 		if (edgeWeight < bestWeight) {
-			bestPath = currentPath;
 			bestWeight = edgeWeight;
+			bestPath = currentPath;
 		}
+		// Cite: Jake Gregg
+		next_permutation(currentPath.begin(), currentPath.end());
 
 		
 	}
